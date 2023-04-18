@@ -41,7 +41,7 @@ class ImageSerializer(serializers.ModelSerializer):
         img_name = image_file.name
 
         # Scale or crop the image
-        image_processor = ImageProcessor(image_file.file)
+        image_processor = ImageProcessor(image_file)
         if resize_mode == 'scale':
             image_processor.scale(validated_data['width'], validated_data['height'])
         elif resize_mode == 'crop':
