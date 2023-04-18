@@ -48,5 +48,5 @@ class ImageSerializer(serializers.ModelSerializer):
         # Call the parent create() method to save the model instance
         image_obj = super().create(validated_data)
         # Save the modified image file to the storage
-        image_obj.image.save(img_name, File(buffer), save=False)
+        image_obj.image.save(img_name, File(buffer), save=True)
         return image_obj
