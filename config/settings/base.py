@@ -303,7 +303,6 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "Finmancorp Python API",
     "DESCRIPTION": "Documentation of API endpoints of Finmancorp Python",
     "VERSION": "1.0.0",
-    "SERVE_PERMISSIONS": ["rest_framework.permissions.IsAdminUser"],
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
