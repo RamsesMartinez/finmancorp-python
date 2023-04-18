@@ -12,7 +12,10 @@ class Image(AbstractBaseModel):
         unique=True,
         db_index=True
     )
-    upload_to = upload_to,
+    image = models.ImageField(
+        verbose_name=_("image"),
+        upload_to=upload_to
+    )
     width = models.PositiveSmallIntegerField(
         verbose_name=_("Width"),
     )
