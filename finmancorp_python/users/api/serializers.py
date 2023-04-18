@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
-from rest_framework import exceptions, serializers
+from rest_framework import exceptions
 from rest_framework_simplejwt.serializers import TokenObtainSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -45,13 +45,3 @@ class UserLoginTokenPairSerializer(TokenObtainSerializer):
 
         refresh = self.get_view_token(user, request)
         return {"refresh": str(refresh), "access": str(refresh.access_token)}
-
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ["name", "url"]
-
-        extra_kwargs = {
-            "url": {"view_name": "api:user-detail", "lookup_field": "pk"},
-        }
