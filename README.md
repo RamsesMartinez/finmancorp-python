@@ -15,6 +15,12 @@ To create a **superuser account**, use this command:
 
     $ docker compose run --rm django python manage.py createsuperuser
 
+### API Docs
+
+You could check the Swagger Documentation
+
+`{{host}}/api/docs/`
+
 ### Type checks
 
 Running type checks with mypy:
