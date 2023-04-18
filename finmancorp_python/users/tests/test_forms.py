@@ -12,7 +12,7 @@ class TestUserAdminCreationForm:
     Test class for all tests related to the UserAdminCreationForm
     """
 
-    def test_username_validation_error_msg(self, user: User):
+    def test_username_validation_error_msg(self, user_factory: User):
         """
         Tests UserAdminCreation Form's unique validator functions correctly by testing:
             1) A new user with an existing username cannot be added.
@@ -24,9 +24,9 @@ class TestUserAdminCreationForm:
         # hence cannot be created.
         form = UserAdminCreationForm(
             {
-                "email": user.email,
-                "password1": user.password,
-                "password2": user.password,
+                "email": user_factory.email,
+                "password1": user_factory.password,
+                "password2": user_factory.password,
             }
         )
 
