@@ -15,7 +15,7 @@ django-crispy-forms==2.0  # https://github.com/django-crispy-forms/django-crispy
 crispy-bootstrap5==0.7  # https://github.com/django-crispy-forms/crispy-bootstrap5
 django-redis==5.2.0  # https://github.com/jazzband/django-redis
 # Django REST Framework
-django-filter==22.1  # https://pypi.org/project/django-filter/
+django-filter==23.1  # https://pypi.org/project/django-filter/
 djangorestframework==3.14.0  # https://github.com/encode/django-rest-framework
 django-cors-headers==3.14.0  # https://github.com/adamchainz/django-cors-headers
 djangorestframework-camel-case==1.4.2  # https://github.com/vbabiy/djangorestframework-camel-case
