@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=finmancorp_python
+POSTGRES_USER=ZruxiPAeZVDQaUwkjJvglInMCcgkeOcR
+POSTGRES_PASSWORD=oBjNzvElbG9HmLvdtMx24Fdd6rpK4b2Y4ED6TD45aV7LYSHxovdYFtLoESKlhgKO

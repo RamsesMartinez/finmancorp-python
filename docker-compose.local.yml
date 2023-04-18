@@ -1,0 +1,74 @@
+version: '3.8'
+
+volumes:
+  finmancorp_python_local_postgres_data: {}
+  finmancorp_python_local_postgres_data_backups: {}
+
+
+networks:
+ finmancorp_network_local:
+    name: finmancorp_network_local
+    driver: bridge
+    ipam:
+      driver: default
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: finmancorp_python_local_django
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+    container_name: finmancorp_python_local_django
+    depends_on:
+      - postgres
+      - mailhog
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./.envs/.local/.django
+      - ./.envs/.local/.postgres
+    ports:
+      - '8000:8000'
+    command: /start
+    networks:
+      finmancorp_network_local:
+        aliases:
+          - django
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: finmancorp_python_local_postgres
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+    container_name: finmancorp_python_local_postgres
+    volumes:
+      - finmancorp_python_local_postgres_data:/var/lib/postgresql/data
+      - finmancorp_python_local_postgres_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres
+    networks:
+      finmancorp_network_local:
+        aliases:
+          - postgres
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+    container_name: finmancorp_python_local_mailhog
+    ports:
+      - "8025:8025"
+    networks:
+      finmancorp_network_local:
+        aliases:
+          - mailhog
