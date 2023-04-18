@@ -10,4 +10,3 @@ class ImageAdmin(admin.ModelAdmin):
         "id",
         "title",
     )
-

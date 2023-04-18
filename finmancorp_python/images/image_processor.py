@@ -1,4 +1,5 @@
 from io import BytesIO
+
 from PIL import Image as PILImage
 
 
@@ -16,7 +17,7 @@ class ImageProcessor:
 
     def save(self):
         buffer = BytesIO()
-        image_format = self.image_file.image.format or 'JPEG'
+        image_format = self.image_file.image.format or "JPEG"
         self.image.save(buffer, format=image_format)
         buffer.seek(0)
         return buffer

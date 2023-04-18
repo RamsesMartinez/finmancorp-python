@@ -1,15 +1,14 @@
 from typing import Any
 
 from django.core.exceptions import FieldError
-from django.utils.translation import gettext_lazy as _
-from rest_framework import mixins, serializers, viewsets
+from rest_framework import mixins, viewsets
 from rest_framework.exceptions import ValidationError
 from rest_framework.request import Request
 from rest_framework.response import Response
 
 
 class CustomCreateModelMixin(mixins.CreateModelMixin):
-    """Clase para sobreescribir la creación de un objeto inyectando el usuario en el request"""
+    """Class to overwrite the creation of an object by injecting the user in the request"""
 
     def create(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         request.data["created_by"] = request.user.id
@@ -17,7 +16,7 @@ class CustomCreateModelMixin(mixins.CreateModelMixin):
 
 
 class CustomUpdateModelMixin(mixins.UpdateModelMixin):
-    """Clase para sobreescribir la actualización de un objeto inyectando el usuario en el request"""
+    """Class to overwrite the update of an object by injecting the user in the request."""
 
     def update(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         request.data["modified_by"] = request.user.id
@@ -25,7 +24,7 @@ class CustomUpdateModelMixin(mixins.UpdateModelMixin):
 
 
 class CustomDestroyModelMixin(mixins.DestroyModelMixin):
-    """Clase para sobreescribir la eliminación de un objeto cambiando el atributo is_active=False"""
+    """Class to overwrite the deletion of an object by changing the is_active=False attribute."""
 
     def perform_destroy(self, instance):
         instance.is_active = False

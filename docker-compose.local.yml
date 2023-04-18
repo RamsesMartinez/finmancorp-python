@@ -4,9 +4,8 @@ volumes:
   finmancorp_python_local_postgres_data: {}
   finmancorp_python_local_postgres_data_backups: {}
 
-
 networks:
- finmancorp_network_local:
+  finmancorp_network_local:
     name: finmancorp_network_local
     driver: bridge
     ipam:
@@ -67,7 +66,7 @@ services:
           memory: 64m
     container_name: finmancorp_python_local_mailhog
     ports:
-      - "8025:8025"
+      - '8025:8025'
     networks:
       finmancorp_network_local:
         aliases:

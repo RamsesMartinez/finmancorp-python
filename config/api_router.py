@@ -2,7 +2,7 @@ from django.conf import settings
 from rest_framework.routers import DefaultRouter, SimpleRouter
 
 from finmancorp_python.images.api.views import ImageViewSet
-from finmancorp_python.users.api.views import UserViewSet, UserAuthNonAtomicViewSet, UserAuthViewSet
+from finmancorp_python.users.api.views import UserAuthNonAtomicViewSet, UserAuthViewSet, UserViewSet
 
 if settings.DEBUG:
     router = DefaultRouter()

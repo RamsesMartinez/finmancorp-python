@@ -1,8 +1,8 @@
-from django.contrib.auth import get_user_model, user_logged_in
-from rest_framework import serializers, exceptions
+from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
+from rest_framework import exceptions, serializers
 from rest_framework_simplejwt.serializers import TokenObtainSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 

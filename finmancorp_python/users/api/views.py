@@ -4,13 +4,13 @@ from django.utils.decorators import method_decorator
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.mixins import ListModelMixin, RetrieveModelMixin, UpdateModelMixin
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
-from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 
-from .serializers import UserSerializer, UserLoginTokenPairSerializer
+from .serializers import UserLoginTokenPairSerializer, UserSerializer
 
 User = get_user_model()
 
@@ -65,9 +65,7 @@ class UserAuthNonAtomicViewSet(viewsets.GenericViewSet):
 
     @action(detail=False, methods=["post"], url_path="token")
     def token(self, request, *args, **kwargs):
-        serializer = self.serializer_class(
-            data=request.data, context={"request": request}
-        )
+        serializer = self.serializer_class(data=request.data, context={"request": request})
 
         try:
             serializer.is_valid(raise_exception=True)
